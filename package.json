@@ -1,0 +1,12 @@
+{
+  "name": "static",
+  "version": "1.0.0",
+  "description": "static files in vercel",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js&&node ./api/index.js;",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "MPL-2.0"
+}
