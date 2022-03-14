@@ -1,4 +1,9 @@
 !function(){
+  if(location.pathname==='/ui') {
+    location.pathname='/ui/';
+    return false;
+  };
+
   function get(url, cb) {
     const xhr = new XMLHttpRequest();
     xhr.open('get', url);
@@ -17,8 +22,9 @@
     document.getElementById('load-time').textContent = loadDuration.toFixed(1);
   },100);
 
-  const pathname = location.pathname;
-  get('/api/dir'+location.pathname, (res)=>{
+  const uiPath = '/ui'
+  const pathname = location.pathname.replace(uiPath, '');
+  get('/api/dir'+pathname, (res)=>{
     clearInterval(timeCounter);
     res = JSON.parse(res);
     if(res.err) {
@@ -26,7 +32,7 @@
       console.error('no such dir');
       const div = document.createElement('div');
       div.insertAdjacentHTML('afterbegin',`
-        <img src="/asset/img/ban.svg" alt="forbidden"/>
+        <img src="${uiPath}/asset/img/ban.svg" alt="forbidden"/>
         Error: <span class="error">${res.err}</span>
       `);
       document.getElementById('fileList').append(div);
@@ -35,7 +41,7 @@
         document.getElementById('loading').classList.add('empty');
         const div = document.createElement('div');
         div.insertAdjacentHTML('afterbegin',`
-          <img src="/asset/img/info.svg" alt="information"/>
+          <img src="${uiPath}/asset/img/info.svg" alt="information"/>
           <span class="info">This is an empty folder~</span>
         `);
         document.getElementById('fileList').append(div);
@@ -45,11 +51,11 @@
       res.d.forEach((dir)=>{
         const div = document.createElement('div');
         div.insertAdjacentHTML('afterbegin',`
-          <img src="/asset/img/folder.svg" alt="folder"/>
+          <img src="${uiPath}/asset/img/folder.svg" alt="folder"/>
           <span class="name">${dir.name}</span>
         `);
         div.onclick = ()=>{
-          location.pathname = pathname + 
+          location.pathname = uiPath + pathname + 
             (pathname.endsWith('/') ? '' : '/') +
             dir.name;
         };
@@ -58,7 +64,7 @@
       res.f.forEach((file)=>{
         const div = document.createElement('div');
         div.insertAdjacentHTML('afterbegin',`
-          <img src="/asset/img/file.svg" alt="file"/>
+          <img src="${uiPath}/asset/img/file.svg" alt="file"/>
           <span class="name">${file.name}</span>
         `);
         div.onclick = ()=>{
@@ -81,7 +87,7 @@
     };
     if(nav==='') return false;
     a.textContent = nav;
-    var dirpath = '/';
+    var dirpath = uiPath + '/';
     for(var i = 0;i<index;i++) {
       dirpath += navs[i+1]+'/';
     };
@@ -94,9 +100,9 @@
     document.getElementById('return').onclick = ()=>{
       navs.pop();
       if(navs.length===1) {
-        location.href = '/';
+        location.href = uiPath;
       }else {
-        location.href = navs.join('/');
+        location.href = uiPath + navs.join('/');
       };
     };
   };

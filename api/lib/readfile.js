@@ -6,7 +6,8 @@ const mimes = {
   css: 'text/css',
   mp3: 'audio/mpeg',
   html: 'text/html',
-  flac: 'audio/x-flac'
+  flac: 'audio/x-flac',
+  svg: 'image/svg+xml'
 }
 
 module.exports = {

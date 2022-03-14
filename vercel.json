@@ -5,8 +5,8 @@
       "destination": "/api/"
     },
     {
-      "source": "/(.*)",
-      "destination": "/"
+      "source": "/ui/(.*)",
+      "destination": "/ui"
     }
   ]
 }

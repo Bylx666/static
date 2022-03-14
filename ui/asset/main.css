@@ -35,7 +35,7 @@ body{
   transition: background-color .2s;
   border-radius: 8px;
 }#breadcrumbs > a::after{
-  content: url(/asset/img/chevron.svg);
+  content: url(/ui/asset/img/chevron.svg);
   transform: rotate(-90deg);
   display: inline-block;
   position: relative;
