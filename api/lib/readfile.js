@@ -1,12 +1,12 @@
 const fs = require('fs');
-const path = require('path')
+const path = require('path');
 const mimes = {
   js: 'application/javascript',
   json: 'application/json',
   css: 'text/css',
   mp3: 'audio/mpeg',
   html: 'text/html',
-
+  flac: 'audio/x-flac'
 }
 
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
       filepath = path.resolve(decodeURIComponent(filepath));
       try {
         return fs.readFileSync(filepath);
-      } catch (err) {
+      }catch (err) {
         return {err: err.message};
       };
     }else return false;

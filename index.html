@@ -4,26 +4,24 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>test</title>
+  <title>Static</title>
+  <link rel="stylesheet" href="/asset/main.css">
 </head>
 <body>
-  <script>
-!function(){
-  function get(url, cb) {
-    const xhr = new XMLHttpRequest();
-    xhr.open('get', url);
-    xhr.send();
-    xhr.onreadystatechange = ()=>{
-      if(xhr.readyState===4) {
-        cb(xhr.response)
-      };
-    };
-  };
-  get('api', (res)=>{
-    document.write(res);
-  });
-
-}();
-  </script>
+  <header id="header">
+    Subkey's Station of <a href="/" style="color: white;">Static</a> Files
+  </header>
+  <nav id="breadcrumbs"></nav>
+  <main id="fileList">
+    <div id="return">
+      <img src="/asset/img/return.svg" alt="return"/>
+      <span class="return">Return to last directory</span>
+    </div>
+  </main>
+  <div id="load">
+    <div id="loading"></div>
+    <span><span id="load-time">0</span>s</span>
+  </div>
+  <script src="/asset/main.js"></script>
 </body>
 </html>

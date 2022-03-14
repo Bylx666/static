@@ -11,12 +11,11 @@ module.exports = {
       urlpath = urlpath.replace('/api/', '');
       function Ret(content, mime) {
         if(mime==='json'||!mime) {
-          this.m = 'application/json';
           this.c = JSON.stringify(content);
-          return true;
+          this.m = 'application/json';
         }else {
-          this.m = mime;
           this.c = content;
+          this.m = mime;
         };
       };
       function dt(st) {
@@ -41,9 +40,7 @@ module.exports = {
         const filepath = urlpath.replace('file/','');
         const readfile = require('./lib/readfile');
         const file = readfile.get(filepath);
-        const mime = file.err
-          ? 'json' 
-          : readfile.getMime(filepath);
+        var mime = file.err ? 'json' : mine = readfile.getMime(filepath);
         return new Ret(file, mime);
       };
     }else return false;

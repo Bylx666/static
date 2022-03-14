@@ -1,0 +1,108 @@
+body{
+  margin: 0;overflow: visible;
+  background-color: #ccffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#header{
+  z-index: 10;
+  position: relative;
+  width: 100%;height: 50px;
+  box-sizing: border-box;
+  border-bottom: 1px solid black;
+  box-shadow: 1px 1px 3px black;
+  background-color: #009999;
+  padding-left: 30px;
+  line-height: 50px;
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+}
+#breadcrumbs{
+  z-index: 9;
+  position: sticky;
+  left: 0;top: 0;
+  width: 100%;height: 30px;
+  box-shadow: 1px 1px 2px black;
+  background-color: #66cccc50;
+}#breadcrumbs > a{
+  color: white;
+  line-height: 30px;
+  font-size: 18px;
+  margin-left: 20px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .2s;
+  border-radius: 8px;
+}#breadcrumbs > a::after{
+  content: url(/asset/img/chevron.svg);
+  transform: rotate(-90deg);
+  display: inline-block;
+  position: relative;
+  width: 16px;height: 16px;
+  top: 8px;left: 5px;
+}#breadcrumbs > a:last-child::after{
+  content: none;
+}#breadcrumbs > a:hover{
+  background-color: #ccffff50;
+}
+#fileList{
+  position: relative;
+  top: 0;left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}#fileList > div{
+  height: 50px;
+  margin: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+}#fileList > div:hover{
+  opacity: .7;
+  background-color: rgba(0, 0, 0, .3);
+}#fileList > div:active{
+  opacity: .5;
+  background-color: rgba(0, 0, 0, .5);
+}#fileList > div > img{
+  width: 30px;height: 30px;
+  margin: 10px 20px;
+}#fileList > div > span{
+  font-size: 20px;
+  line-height: 50px;
+  color: black;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}#fileList > div > .error{
+  color: #FF0000A0;
+}#fileList > div > .return{
+  color: #009999A0;
+}#fileList > div > .info{
+  color: #FFFF00;
+  text-shadow: 1px 1px 3px black;
+}
+
+#load{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  line-height: 30px;
+  font-size: 12px;
+}#loading{
+  position: absolute;
+  transition: transform linear .1s;
+  bottom: 30px;right: 0;
+  width: 50px;height: 50px;
+  border-radius: 25px;
+  background-image: linear-gradient(0deg, #00FF0050, #0000), 
+    linear-gradient(120deg, #0000FF50, #0000), 
+    linear-gradient(240deg, #FF000050, #0000);
+}#loading.succeed{
+  background-image: linear-gradient(0deg, #00FF00A0, #0000)
+}#loading.failed{
+  background-image: linear-gradient(0deg, #FF0000A0, #0000)
+}#loading.empty{
+  background-image: linear-gradient(0deg, #0000FFA0, #0000)
+}
